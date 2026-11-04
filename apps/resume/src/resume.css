@@ -1,0 +1,85 @@
+@page {
+  size: A4;
+  margin: 0;
+}
+
+.resume-page,
+.resume-page * {
+  box-sizing: border-box;
+}
+
+.resume-page {
+  width: 210mm;
+  min-height: 297mm;
+  /* Keep backgrounds (e.g. the grey sidebar) when printing. */
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+@media screen {
+  body {
+    margin: 0;
+    background: #525659;
+  }
+
+  .preview {
+    min-height: 100vh;
+  }
+
+  .preview-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    background: #d5c4a1;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.4);
+  }
+
+  .preview-sheet {
+    display: flex;
+    justify-content: safe center;
+    padding: 24px 16px 48px;
+    overflow-x: auto;
+  }
+
+  .resume-page {
+    flex-shrink: 0;
+    box-shadow: 0 2px 12px rgb(0 0 0 / 0.5);
+  }
+
+  .page-break {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    border-top: 2px dashed #e5484d;
+    pointer-events: none;
+  }
+
+  .page-break::after {
+    content: attr(data-label);
+    position: absolute;
+    top: -9px;
+    left: calc(100% + 8px);
+    font:
+      11px / 1 Helvetica,
+      Arial,
+      sans-serif;
+    color: #fff;
+    white-space: nowrap;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none;
+  }
+
+  body {
+    margin: 0;
+  }
+}

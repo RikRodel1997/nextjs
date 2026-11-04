@@ -1,0 +1,36 @@
+{
+  "name": "nextjs",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "biome lint --write",
+    "format": "biome format --write",
+    "update": "yarn upgrade-interactive --latest",
+    "check": "turbo run check",
+    "check:types": "turbo run check:types",
+    "check:dead": "turbo run check:dead",
+    "test:ui": "turbo run test:ui",
+    "test:mock": "turbo run test:mock",
+    "test:coverage": "turbo run test:coverage"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "yarn",
+      "version": "4.18.1"
+    }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.5",
+    "turbo": "^2.11.10"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "packageManager": "yarn@4.18.1",
+  "resolutions": {
+    "lucide-react": "1.71.0"
+  }
+}

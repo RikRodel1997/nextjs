@@ -1,3 +1,3 @@
-export * from "./Email.js";
-export * from "./Link.js";
-export * from "./Phone.js";
+export * from "./Email";
+export * from "./Link";
+export * from "./Phone";

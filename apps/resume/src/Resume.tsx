@@ -1,9 +1,9 @@
 import { type CSSProperties, useLayoutEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import Contact from "./components/Contact.js";
-import Experience, { type ExperienceProps } from "./components/Experience.js";
-import Language, { type LanguageProps } from "./components/Language.js";
-import Skill, { type SkillProps } from "./components/Skill.js";
+import Contact from "./components/Contact";
+import Experience, { type ExperienceProps } from "./components/Experience";
+import Language, { type LanguageProps } from "./components/Language";
+import Skill, { type SkillProps } from "./components/Skill";
 
 const PAGE_HEIGHT_MM = 297;
 const PAGE_HEIGHT_PX = (PAGE_HEIGHT_MM * 96) / 25.4;

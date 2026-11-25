@@ -2,12 +2,12 @@ import { useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { useTranslation } from "react-i18next";
 import { useReactToPrint } from "react-to-print";
-import "./i18n.js";
+import "./i18n";
 import "./resume.css";
 import "@repo/ui/globals.css";
 import { Button } from "@repo/ui/components/button";
-import { LanguageSelector } from "./components/LanguageSelector.js";
-import Resume from "./Resume.js";
+import { LanguageSelector } from "./components/LanguageSelector";
+import Resume from "./Resume";
 
 export const App = () => {
   const { i18n } = useTranslation();

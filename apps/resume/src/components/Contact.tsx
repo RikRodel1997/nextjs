@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import type { ResumeLink } from "@/types";
-import { Email, Link as LinkIcon, Phone } from "../icons/index.js";
+import { Email, Link as LinkIcon, Phone } from "../icons/index";
 
 export default function Contact() {
   const { t } = useTranslation();

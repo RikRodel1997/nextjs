@@ -9,6 +9,8 @@
     "languages.title",
     "experience.title",
     "education.title",
+    "summary",
+    "hobbies",
     "experience.current",
     "education.current",
     "personal",
@@ -17,10 +19,6 @@
     "experiences"
   ],
   "properties": {
-    "summary.title": {
-      "type": "string",
-      "description": "Label for the summary section"
-    },
     "contact.title": {
       "type": "string",
       "description": "Label for the contact section"
@@ -101,8 +99,25 @@
       }
     },
     "summary": {
+      "type": "object",
+      "required": [
+        "label",
+        "content"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "The label for the 'Summary' header"
+        },
+        "content": {
+          "type": "string",
+          "description": "The content that goes under the 'Summary' header"
+        }
+      }
+    },
+    "hobbies": {
       "type": "string",
-      "description": "Content for the summary section"
+      "description": "Hobbies that you like to practice"
     },
     "skills": {
       "type": "array",
@@ -111,16 +126,16 @@
         "type": "object",
         "required": [
           "name",
-          "level"
+          "proficiency"
         ],
         "properties": {
           "name": {
             "type": "string",
             "description": "Name of the skill or expertise (e.g., 'TypeScript', 'REST APIs')"
           },
-          "level": {
+          "proficiency": {
             "type": "string",
-            "description": "Short summary on what kind of expertise you have (e.g. '1 year professionally')"
+            "description": "Proficiency of the skill or expertise (e.g., '1 year professionally')"
           }
         }
       }
@@ -132,16 +147,16 @@
         "type": "object",
         "required": [
           "name",
-          "level"
+          "proficiency"
         ],
         "properties": {
           "name": {
             "type": "string",
             "description": "Language name (e.g. 'Dutch', 'English')"
           },
-          "level": {
+          "proficiency": {
             "type": "string",
-            "description": "Level of speaking the language (e.g. 'Basic', 'Professional')"
+            "description": "Proficiency of the language (e.g. 'Basic', 'Professional')"
           }
         }
       }

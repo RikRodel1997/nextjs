@@ -1,55 +1,14 @@
-import { type CSSProperties, useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Contact from "./components/Contact";
 import Experience, { type ExperienceProps } from "./components/Experience";
-import Language, { type LanguageProps } from "./components/Language";
-import Skill, { type SkillProps } from "./components/Skill";
+import Hobbies from "./components/Hobbies";
+import Languages from "./components/Languages";
+import Skills from "./components/Skills";
+import Summary from "./components/Summary";
 
 const PAGE_HEIGHT_MM = 297;
 const PAGE_HEIGHT_PX = (PAGE_HEIGHT_MM * 96) / 25.4;
-const SIDEBAR_WIDTH = "30%";
-
-const styles: Record<string, CSSProperties> = {
-  page: {
-    position: "relative",
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "flex-start",
-    background: `linear-gradient(to right, #C5BBA8 ${SIDEBAR_WIDTH}, #FFFFFF ${SIDEBAR_WIDTH})`,
-    fontFamily: "Helvetica, Arial, sans-serif",
-    fontSize: 10,
-    lineHeight: 1.5,
-    color: "#000",
-  },
-  sidebar: {
-    width: SIDEBAR_WIDTH,
-    padding: 15,
-    display: "flex",
-    flexDirection: "column",
-  },
-  sidebarHeader: { fontSize: 12, fontWeight: "bold", marginTop: 20, marginBottom: 5 },
-  main: {
-    paddingTop: 20,
-    width: "70%",
-    padding: 15,
-    display: "flex",
-    flexDirection: "column",
-  },
-  name: {
-    fontSize: 22,
-    fontWeight: "bold",
-    marginBottom: 10,
-    marginTop: 0,
-  },
-  sectionTitle: {
-    fontSize: 12,
-    fontWeight: "bold",
-    marginTop: 20,
-    marginBottom: 10,
-    borderBottom: "1px solid #000",
-    paddingBottom: 4,
-  },
-} as const;
 
 function usePageCount() {
   const sidebarRef = useRef<HTMLDivElement>(null);
@@ -75,15 +34,14 @@ function usePageCount() {
 
 export default function Resume() {
   const { t } = useTranslation();
-  const skills = t("skills", { returnObjects: true }) as SkillProps[];
-  const languages = t("languages", { returnObjects: true }) as LanguageProps[];
   const experiences = t("experiences", { returnObjects: true }) as ExperienceProps[];
+
   const { sidebarRef, mainRef, pageCount } = usePageCount();
 
   return (
     <div
-      className="resume-page"
-      style={{ ...styles.page, minHeight: `${pageCount * PAGE_HEIGHT_MM}mm` }}
+      className="resume-page relative flex flex-row items-start bg-[linear-gradient(to_right,#C5BBA8_35%,#FFFFFF_35%)] font-[Helvetica,Arial,sans-serif] text-[10px] leading-normal text-black"
+      style={{ minHeight: `${pageCount * PAGE_HEIGHT_MM}mm` }}
     >
       {Array.from({ length: pageCount - 1 }, (_, i) => (
         <div
@@ -93,28 +51,19 @@ export default function Resume() {
           data-label={`Page ${i + 2}`}
         />
       ))}
-      <div ref={sidebarRef} style={styles.sidebar}>
+      <div ref={sidebarRef} className="flex flex-col p-4 w-[35%] shrink-0">
         <Contact />
-        <h3 style={styles.sidebarHeader}>{t("skills.title")}</h3>
-        <div style={{ display: "flex", flexDirection: "column", flexWrap: "wrap", gap: 4 }}>
-          {skills.map(({ name, level }) => (
-            <Skill key={name} name={name} level={level} />
-          ))}
-        </div>
-
-        <h3 style={styles.sidebarHeader}>{t("languages.title")}</h3>
-        <div style={{ display: "flex", flexDirection: "column", flexWrap: "wrap", gap: 4 }}>
-          {languages.map(({ name, level }) => (
-            <Language key={name} name={name} level={level} />
-          ))}
-        </div>
+        <Skills />
+        <Languages />
+        <Hobbies />
       </div>
 
-      <div ref={mainRef} style={styles.main}>
-        <h1 style={styles.name}>{t("personal.name")}</h1>
-        <p style={{ fontSize: 14, color: "#444", margin: 0 }}>{t("personal.title")}</p>
-
-        <h2 style={styles.sectionTitle}>{t("experience.title")}</h2>
+      <div ref={mainRef} className="flex w-[70%] flex-col p-[15px]">
+        <p className="text-base font-bold mb-1">{t("personal.name")}</p>
+        <p className="text-xs mb-1 text-[#444]">{t("personal.title")}</p>
+        <Summary />
+        <p className="text-base font-bold mt-2">{t("experience.title")}</p>
+        <hr />
         {experiences.map(({ jobTitle, company, summary, achievements, startDate, endDate }) => (
           <Experience
             key={`${jobTitle}${company}`}
@@ -127,7 +76,8 @@ export default function Resume() {
           />
         ))}
 
-        <h2 style={styles.sectionTitle}>{t("education.title")}</h2>
+        <h2 className="text-base font-bold mt-2">{t("education.title")}</h2>
+        <hr />
       </div>
     </div>
   );

@@ -8,17 +8,17 @@ export default function Contact() {
 
   return (
     <>
-      <h3 className="text-sm font-bold">{t("contact.title")}</h3>
-      <div>
+      <h3 className="font-bold">{t("contact.title")}</h3>
+      <div className="flex flex-row mb-1">
         <Phone className="mr-5 w-4 h-4" />
         <span>{t("personal.phone")}</span>
       </div>
-      <div>
+      <div className="flex flex-row mb-1">
         <Email className="mr-5 w-4 h-4" />
         <span>{t("personal.email")}</span>
       </div>
       {links.map((link) => (
-        <div key={link.url}>
+        <div key={link.url} className="flex flex-row mb-1">
           <LinkIcon className="mr-5 w-4 h-4" />
           <a href={link.url} target="_blank" rel="noreferrer">
             {link.label}

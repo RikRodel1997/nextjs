@@ -24,22 +24,15 @@ export default function Experience({
   const { t } = useTranslation();
 
   return (
-    <div style={{ marginBottom: 10 }}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <p style={{ fontSize: 9, fontWeight: "bold", margin: 0 }}>{jobTitle}</p>
-        <p style={{ fontSize: 8, margin: 0 }}>
+    <div className="mb-1">
+      <div className="flex flex-row align-center justify-between">
+        <p className="font-bold">{jobTitle}</p>
+        <p>
           {startDate} - {endDate ? endDate : t("experience.current")}
         </p>
       </div>
-      <p style={{ fontSize: 8, lineHeight: 1.7, fontStyle: "italic", margin: 0 }}>{company}</p>
-      <p style={{ fontSize: 8, lineHeight: 1.6, margin: 0 }}>{summary}</p>
+      <p className="italic">{company}</p>
+      <p>{summary}</p>
       {achievements ? (
         <BulletList
           items={achievements}

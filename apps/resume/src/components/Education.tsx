@@ -18,14 +18,14 @@ export default function Education({
   const { t } = useTranslation();
 
   return (
-    <div style={{ marginBottom: 10 }}>
-      <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
-        <p style={{ fontSize: 9, fontWeight: "bold", margin: 0 }}>
+    <div className="mb-1">
+      <div className="flex flex-row items-center">
+        <p className="font-bold">
           {study} | {location}
         </p>
       </div>
-      <p style={{ fontSize: 9, margin: 0 }}>{summary}</p>
-      <p style={{ fontSize: 9, margin: 0 }}>
+      <p>{summary}</p>
+      <p>
         {startDate} - {endDate ? endDate : t("education.current")}
       </p>
     </div>
